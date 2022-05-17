@@ -32,18 +32,35 @@ public class Surface extends RenovationObject{
     }
 
     @Override
-    public Map<String, Integer>addMaterialRequirements(Map<String, Integer> materials){
-        try{
-            
-            Map<String, Integer> newMaterial = new TreeMap<String, Integer>();
-            for(String s : materials.keySet()){
-                newMaterial.put(s, materials.get(s));
-            }
+	public Map<String, Integer> addMaterialReq(Map<String, Integer> materials) {
+		// TODO Auto-generated method stub
 
-        }catch(Exception e){
-            System.out.println("ungültige Eingabe");
-            throw new NullPointerException();
-        }
-        return newMaterial;
-    }
+		if (materials==null)
+			throw new NullPointerException();
+		
+		Map<String, Integer> newMaterials = new TreeMap<String, Integer>();
+		
+		if(!materials.isEmpty())
+		{
+			for(String s : materials.keySet())
+			{
+				if(materials.get(s)==null)
+					throw new NullPointerException();
+				newMaterials.put(s, materials.get(s));
+			}
+		}
+		
+		if(materials.containsKey(this.selectedMaterial.getName()))
+		{
+			int numOfMaterials = newMaterials.get(this.selectedMaterial.getName());
+			newMaterials.put(this.selectedMaterial.getName(), this.selectedMaterial.getMaterialRequrirements(this)+numOfMaterials);
+		}
+		else
+		{
+			newMaterials.put(this.selectedMaterial.getName(), this.selectedMaterial.getMaterialRequrirements(this));
+		}
+
+		
+		return newMaterials;
+	}
 }
