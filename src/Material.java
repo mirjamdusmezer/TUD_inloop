@@ -22,6 +22,7 @@ public abstract class Material {
     public abstract int getMaterialRequrirements(Surface surface);
 
     public double getPriceOfASurface(Surface surface){
+        return 1;
     }
 
 

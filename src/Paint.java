@@ -20,6 +20,6 @@ public class Paint extends Material{
 
     @Override
     public int getMaterialRequrirements(Surface surface){
-        
+        return 1;
     }
 }
