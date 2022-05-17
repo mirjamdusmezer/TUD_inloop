@@ -33,15 +33,16 @@ public class Surface extends RenovationObject{
 
     @Override
 	public Map<String, Integer> addMaterialReq(Map<String, Integer> materials) {
-		// TODO Auto-generated method stub
 		
-		Map<String, Integer> newMaterials = new TreeMap<String, Integer>();
+		Map<String, Integer> newMaterial = new TreeMap<String, Integer>();
 		
-			for(String s : materials.keySet())
+			for(String s : materials.keySet()) // for each Schleife um durch die Materialbezeichnungen zu iterieren
 			{
-				newMaterials.put(s, materials.get(s));
+				newMaterial.put(s, materials.get(s));
 			}
 		
-		return newMaterials;
+		return newMaterial;
 	}
 }
+
+// Hashmap Prinzip: HashMap<Key, Value> --> mit KeySet greift man dann quasi auf den Schlüsselwert, in unserem Fall den String Wert, zu

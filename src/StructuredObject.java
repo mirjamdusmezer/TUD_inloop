@@ -17,19 +17,19 @@ public class StructuredObject extends RenovationObject{
         this.parts = new HashSet<>();
     }
 
-    // Methode um den Preis einer Oberfläche anzuzeigen --> die wird überschrieben, weil diese Klasse ja von Renovierungsobjekt erbt, in der so eine Funktion schon definiert wurde
+    // Methode um den Preis einer Oberfläche hinzuzufügen
     @Override
 	public Map<String, Integer> addMaterialReq(Map<String, Integer> materials) {
 		
-		Map<String, Integer> newMaterials = new TreeMap<String, Integer>();
+		Map<String, Integer> newMaterial = new TreeMap<String, Integer>();
 		
-		newMaterials=materials;
-		for(RenovationObject r : parts)
+		newMaterial=materials;
+		for(RenovationObject renovationObject : parts)
 		{
-			newMaterials = r.addMaterialReq(newMaterials);
-			System.out.println(newMaterials);	
+			newMaterial = renovationObject.addMaterialReq(newMaterial);
+			System.out.println(newMaterial);	
 		}
 
-		return newMaterials;
+		return newMaterial;
 	}
 }
