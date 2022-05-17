@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Surface extends RenovationObject{
     private double length;
     private double width;
@@ -24,11 +26,24 @@ public class Surface extends RenovationObject{
         return this.width;
     }
 
+    @Override
     public double getPrice(){
         return this.selectedMaterial.getPriceOfASurface(this);
     }
 
+    @Override
     public Map<String, Integer>addMaterialRequirements(Map<String, Integer> materials){
+        try{
+            
+            Map<String, Integer> newMaterial = new TreeMap<String, Integer>();
+            for(String s : materials.keySet()){
+                newMaterial.put(s, materials.get(s));
+            }
 
+        }catch(Exception e){
+            System.out.println("ungültige Eingabe");
+            throw new NullPointerException();
+        }
+        return newMaterial;
     }
 }
