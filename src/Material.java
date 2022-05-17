@@ -18,13 +18,12 @@ public abstract class Material {
     }
 
     // Methode um Materialvoraussetzungen anzuzeigen
+    
     public int getMaterialRequrirements(Surface surface){
         
     }
 
-    // Methode um den Preis einer Oberfläche anzuzeigen
     public double getPriceOfASurface(Surface surface){
-
     }
 
 
