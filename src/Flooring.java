@@ -5,15 +5,23 @@ public class Flooring extends Material{
 
     public Flooring(String name, double price, double width){
         super(name, price);
-        this.widthOfFlooring = width;
+        if(width <=0){
+			throw new IllegalArgumentException();
+        }
+        widthOfFlooring = width;
     }
 
     public double getWidth(){
-        return this.widthOfFlooring;
+        return widthOfFlooring;
     }
 
     @Override
     public int getMaterialRequrirements(Surface surface){
-        return 1;
+
+        if(surface == null){
+            throw new NullPointerException();
+        }
+        double fläche =  (surface.getArea()/widthOfFlooring);
+        return (int)(fläche/limit);
     }
 }

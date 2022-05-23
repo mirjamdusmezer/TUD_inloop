@@ -2,9 +2,12 @@ import java.util.*;
 
 public class StructuredObject extends RenovationObject{
 
-    private HashSet<RenovationObject>parts;
+    private Set<RenovationObject>parts;
 
     public void add(RenovationObject renovationObject){
+        if(renovationObject==null){
+			throw new NullPointerException();
+        }
         parts.add(renovationObject);
     }
 
@@ -14,22 +17,31 @@ public class StructuredObject extends RenovationObject{
     }
 
     public StructuredObject(){
-        this.parts = new HashSet<>();
+        this.parts = new TreeSet<>();
     }
 
     // Methode um den Preis einer Oberfläche hinzuzufügen
     @Override
 	public Map<String, Integer> addMaterialReq(Map<String, Integer> materials) {
+
+        if (materials==null){
+			throw new NullPointerException();
+        }
+
+		if(materials.containsValue(null)){
+			throw new NullPointerException();
+        }
 		
-		Map<String, Integer> newMaterial = new TreeMap<String, Integer>();
+	//	Map<String, Integer> newMaterial = new TreeMap<String, Integer>();
 		
-		newMaterial=materials;
+		// newMaterial=materials;
 		for(RenovationObject renovationObject : parts)
 		{
-			newMaterial = renovationObject.addMaterialReq(newMaterial);
-			System.out.println(newMaterial);	
+            
+		materials = renovationObject.addMaterialReq(materials);
+		// 	System.out.println(newMaterial);	
 		}
 
-		return newMaterial;
+		return materials;
 	}
 }
