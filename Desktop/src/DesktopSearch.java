@@ -1,8 +1,10 @@
 public class DesktopSearch {
     private Map<String, ResourceType> types;
+    private Index index;
 
     public DesktopSearch(){
-        types = new HasMap<>();
+        types = new HashMap<String, ResourceType>();
+        this.index = new Index();
     }
 
     public void registerType(String extension, ResourceType type){
@@ -21,10 +23,10 @@ public class DesktopSearch {
     }
 
     public void registerResource(Resource res){
-        
+        index.add(res);
     }
 
     public List<Resource> processRequest(String request){
-        
+        return index.getResources(request);
     }
 }

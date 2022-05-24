@@ -1,9 +1,13 @@
 import java.util.*;
 
-public class TextFileIterator implements Iterator {
+public class TextFileIterator implements Iterator<String> {
+
+    private String text;
+    private String nextWord;
 
     public TextFileIterator(Resource res) {
-
+        String t = getAsString(res);
+        this.text = t.replaceAll("-\n(?=[a-z])", "");
         this.res = res;
     }
 
@@ -11,7 +15,7 @@ public class TextFileIterator implements Iterator {
         return iterator.hasNext();
     }
 
-    public Object next() {
+    public String next() {
         return iterator.next();
     }
 
@@ -20,6 +24,6 @@ public class TextFileIterator implements Iterator {
     }
 
     public String getAsString(Resource res){
-        
+
     }
 }

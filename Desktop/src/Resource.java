@@ -8,6 +8,9 @@ public class Resource {
     public Resource(String name, String path, ResourceType rt){
         if (name.isEmpty() || path.isEmpty())
             throw new IllegalArgumentException();
+        rt = type;
+        this.name = name;
+        this.path = path; 
     }
 
     public String getName() {
